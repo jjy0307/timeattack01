@@ -3,7 +3,7 @@ from flask import Flask, render_template, jsonify, request, session, redirect, u
 app = Flask(__name__)
 
 from pymongo import MongoClient
-client = MongoClient('mongodb+srv://test:sparta@cluster0.1ia25.mongodb.net/myFirstDatabase?retryWrites=true&w=majority')
+client = MongoClient('')
 db = client.dbsparta
 
 SECRET_KEY = 'SPARTA'
