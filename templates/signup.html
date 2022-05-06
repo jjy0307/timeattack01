@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>로그인 회원가입</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bulma CSS 링크 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+
+    <!-- JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+    <style>
+        .box1 {
+            margin: 200px 800px 0px 800px;
+            background: rgb(230, 230, 230);
+            border-radius: 1px;
+            text-align: center;
+        }
+    </style>
+    <script>
+        // 간단한 회원가입 함수입니다.
+        // 아이디, 비밀번호, 닉네임을 받아 DB에 저장합니다.
+        function register() {
+            $.ajax({
+                type: "POST",
+                url: "/api/register",
+                data: {
+                    id_give: $('#userid').val(),
+                    pw_give: $('#userpw').val(),
+                },
+                success: function (response) {
+                    if (response['result'] == 'success') {
+                        alert('회원가입이 완료되었습니다.')
+                        window.location.href = '/index.html'
+                    } else {
+                        alert(response['msg'])
+                    }
+                }
+            })
+        }
+
+    </script>
+</head>
+<body>
+<div class="box1">
+    <input type="text" class="input" id="userid" aria-describedby="emailHelp" placeholder="My ID">
+    <br>
+    <input type="password" class="input" id="userpw" placeholder="My Password">
+    <br>
+    <button onclick="register()">회원가입</button>
+    <br>
+    <button onclick="login()">로그인</button>
+    </form>
+</body>
+</html>
